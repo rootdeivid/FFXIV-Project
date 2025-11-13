@@ -11,6 +11,13 @@ body {
     line-height: 1.6;
 }
 
+
+
+/* .container { TA BUGADO
+    width: 1000px;
+    height: 1000px;
+} */
+
 .login {
   height: var(--tamanho-login);
   background-size: cover;
@@ -125,6 +132,9 @@ body {
 }
 
 .navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
