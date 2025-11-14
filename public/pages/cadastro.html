@@ -35,26 +35,37 @@
                          Para inserir mais um campo, copie uma das inputs abaixo.
                          Assim que inserir vá para o script abaixo.
                      -->
+          Nome: <input id="nome_input" type="text" placeholder="Seu nome" />
+          Apelido no jogo: <input id="apelido_input" type="text" placeholder="Apelido"/>
+          E-mail: <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
+          Senha: <input id="senha_input" type="password" placeholder="******" />
+          Confirmação da Senha: <input id="confirmacao_senha_input" type="password" placeholder="******" />
+          Raca: <select id="select_raca"> 
+            <option>Hyur</option>
+            <option>Miqo'te</option>
+            <option>Elezen</option>
+            <option>Roegadyn</option>
+            <option>Lalafell</option>
+            <option>Au Ra</option>
+            <option>Hrothgar</option>
+            <option>Viera</option>
+          </select>
+          Classe: <select>
+            <option>Guerreiro</option>
+            <option>Monge</option>
+            <option>Mago</option>
+            <option>Ladino</option>
+            <option>Bardo</option>
+            <option>Invocador</option>
+          </select>
+          Data Center: <select id="select_dataCenter">
+            <option>Norte America</option>
+            <option>Europa</option>
+            <option>Oceania</option>
+            <option>Japao</option>
+          </select>
+          
           <div class="campo">
-            <span>Código de ativação:</span>
-            <input id="codigo_input" type="text" placeholder="Insira aqui seu código" />
-          </div>
-          <div class="campo">
-            <span>Nome:</span>
-            <input id="nome_input" type="text" placeholder="Seu nome" />
-          </div>
-          <div class="campo">
-            <span>E-mail:</span>
-            <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
-          </div>
-          <div class="campo">
-            <span>Senha:</span>
-            <input id="senha_input" type="password" placeholder="******" />
-          </div>
-          <div class="campo">
-            <span>Confirmação da Senha:</span>
-            <input id="confirmacao_senha_input" type="password" placeholder="******" />
-          </div>
           <button class="botao" onclick="cadastrar()">Cadastrar</button>
         </div>
         <div id="div_aguardar" class="loading-div">

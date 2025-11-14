@@ -218,7 +218,6 @@ body {
 .footer {
     background-color: #0f0f1f;
     padding: 40px 0 20px;
-    margin-top: 60px;
 }
 
 .footer-container {
@@ -248,10 +247,6 @@ body {
     color: #e0e0e0;
     text-decoration: none;
     transition: color 0.3s;
-}
-
-.footer-nav a {
-    color: #ffcc00;
 }
 
 .footer-copyright {
