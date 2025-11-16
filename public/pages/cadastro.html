@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/cadastro.css">
     <title>Final Fantasy XIV - Página Inicial</title>
 </head>
 <body>
@@ -50,7 +50,7 @@
             <option>Hrothgar</option>
             <option>Viera</option>
           </select>
-          Classe: <select>
+          Classe: <select id="select_class">
             <option>Guerreiro</option>
             <option>Monge</option>
             <option>Mago</option>
@@ -99,7 +99,7 @@
 <script>
 
   // Array para armazenar empresas cadastradas para validação de código de ativação 
-  let listaEmpresasCadastradas = [];
+  let listaCadastro = [];
 
   function cadastrar() {
     // aguardar();
@@ -107,19 +107,20 @@
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
     var nomeVar = nome_input.value;
+    var ApelidoVar = apelido_input;
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var codigoVar = codigo_input.value;
-    var idEmpresaVincular
+    var racaVar = select_raca.value;
+    var classeVar = select_class.value;
+    var dataVar = select_dataCenter.value;
 
     // Verificando se há algum campo em branco
     if (
       nomeVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
-      confirmacaoSenhaVar == "" ||
-      codigoVar == ""
+      confirmacaoSenhaVar == ""
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
@@ -129,19 +130,6 @@
       return false;
     } else {
       setInterval(sumirMensagem, 5000);
-    }
-
-    // Verificando se o código de ativação é de alguma empresa cadastrada
-    for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
-      if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
-        idEmpresaVincular = listaEmpresasCadastradas[i].id
-        console.log("Código de ativação válido.");
-        break;
-      } else {
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
-        finalizarAguardar();
-      }
     }
 
     // Enviando o valor da nova input
@@ -156,7 +144,9 @@
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
-        idEmpresaVincularServer: idEmpresaVincular
+        classeServer: classVar,
+        dataCenterServer: dataVar,
+        racaServer: racaVar
       }),
     })
       .then(function (resposta) {
@@ -188,16 +178,16 @@
 
   // Listando empresas cadastradas 
   function listar() {
-    fetch("/empresas/listar", {
+    fetch("/usuarios/listar", {
       method: "GET",
     })
       .then(function (resposta) {
         resposta.json().then((empresas) => {
           empresas.forEach((empresa) => {
-            listaEmpresasCadastradas.push(empresa);
+            listaCadastro.push(empresa);
 
-            console.log("listaEmpresasCadastradas")
-            console.log(listaEmpresasCadastradas[0].codigo_ativacao)
+            console.log("listaCadastro")
+            console.log(listaCadastro[0].codigo_ativacao)
           });
         });
       })
