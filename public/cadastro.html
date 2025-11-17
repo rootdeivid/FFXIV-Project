@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/cadastro.css">
+  <title>Final Fantasy XIV - Página Inicial</title>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="navbar-container">
+      <ul class="navbar-nav">
+        <li><a href="../index.html">Início</a></li>
+        <li><a href="../pages/classes.html">Classes</a></li>
+        <li><a href="#">Mundo</a></li>
+        <li><a href="../pages/login.html">Login</a></li>
+        <li><a href="../pages/cadastro.html">Cadastro</a></li>
+      </ul>
+    </div>
+  </nav>
+  </head>
+
+  <body>
+    <div class="login">
+      <div class="alerta_erro">
+        <div class="card_erro" id="cardErro">
+          <span id="mensagem_erro"></span>
+        </div>
+      </div>
+      <div class="container">
+        <div class="card card-cadastro">
+          <h2>Bem-vindo!</h2>
+          <div class="formulario">
+            <!--
+                         Para inserir mais um campo, copie uma das inputs abaixo.
+                         Assim que inserir vá para o script abaixo.
+                     -->
+            Nome: <input id="nome_input" type="text" placeholder="Seu nome" />
+            Apelido no jogo: <input id="apelido_input" type="text" placeholder="Apelido" />
+            E-mail: <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
+            Senha: <input id="senha_input" type="password" placeholder="******" />
+            Confirmação da Senha: <input id="confirmacao_senha_input" type="password" placeholder="******" />
+            Raca: <select id="select_raca">
+              <option>Hyur</option>
+              <option>Miqo'te</option>
+              <option>Elezen</option>
+              <option>Roegadyn</option>
+              <option>Lalafell</option>
+              <option>Au Ra</option>
+              <option>Hrothgar</option>
+              <option>Viera</option>
+            </select>
+            Classe: <select id="select_class">
+              <option>Guerreiro</option>
+              <option>Monge</option>
+              <option>Mago</option>
+              <option>Ladino</option>
+              <option>Bardo</option>
+              <option>Invocador</option>
+            </select>
+            Data Center: <select id="select_dataCenter">
+              <option>Norte America</option>
+              <option>Europa</option>
+              <option>Oceania</option>
+              <option>Japao</option>
+            </select>
+
+            <div class="campo">
+              <button class="botao" onclick="cadastrar()">Cadastrar</button>
+            </div>
+            <div id="div_aguardar" class="loading-div">
+              <img src="./assets/circle-loading.gif" id="loading-gif" />
+            </div>
+
+            <div id="div_erros_login"></div>
+          </div>
+        </div>
+      </div>
+
+      <!--footer inicio-->
+      <footer class="footer">
+        <div class="container footer-container">
+          <img src="../assets/icon/icon.png" alt="Final Fantasy XIV Logo" class="footer-logo">
+          <ul class="footer-nav">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Sobre</a></li>
+            <li><a href="#">Expansões</a></li>
+            <li><a href="#">Últimas Atualizações</a></li>
+            <li><a href="#">Suporte</a></li>
+          </ul>
+          <p class="footer-copyright">© 2010 - 2024 SQUARE ENIX CO., LTD. Todos os direitos reservados.</p>
+        </div>
+      </footer>
+      <!--footer fim-->
+  </body>
+
+</html>
+
+<script>
+
+  // Array para armazenar empresas cadastradas para validação de código de ativação 
+  let listaCadastro = [];
+
+  function cadastrar() {
+    // aguardar();
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = nome_input.value;
+    var ApelidoVar = apelido_input;
+    var emailVar = email_input.value;
+    var senhaVar = senha_input.value;
+    var confirmacaoSenhaVar = confirmacao_senha_input.value;
+    var racaVar = select_raca.value;
+    var classeVar = select_class.value;
+    var dataVar = select_dataCenter.value;
+
+    // Verificando se há algum campo em branco
+    if (
+      nomeVar == '' ||
+      ApelidoVar == '' ||
+      emailVar == '' ||
+      senhaVar == '' ||
+      confirmacaoSenhaVar == '' ||
+      racaVar == '' ||
+      classeVar == '' ||
+      dataVar == ''
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para todos os campos em branco)";
+
+      finalizarAguardar();
+      return false;
+    } else {
+      setInterval(sumirMensagem, 5000);
+    }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        apelidoServer: ApelidoVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+        classeServer: classeVar,
+        dataCenterServer: dataVar,
+        racaServer: racaVar
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          cardErro.style.display = "block";
+
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+
+          limparFormulario();
+          finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    return false;
+  }
+
+  function sumirMensagem() {
+    cardErro.style.display = "none";
+  }
+</script>
