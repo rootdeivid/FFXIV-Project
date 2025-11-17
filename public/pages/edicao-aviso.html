@@ -6,11 +6,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Página Inicial</title>
+    <title>Eorzea Analytics | Dashboards</title>
 
     
-    <link rel="stylesheet" href="./../css/dashboards.css">
-    <link rel="stylesheet" href="./../css/estilo.css" />
+    <link rel="stylesheet" href="./../css/mural.css">
     <script src="../js/sessao.js"></script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -21,43 +20,37 @@
 
 <body onload="validarSessao(), listarInfosDeUm()" style="background-color: #161618;">
     <!-- <body onload="validarSessao()"> -->
+        
+    <div class="overlay">
+        <div class="janela">
+            <!-- MENU LATERAL -->
+            <div class="header-left">
+                <h1>Eorzea Analytics</h1>
 
-    <div class="janela">
+                <div class="hello">
+                    <h3>Olá, <span id="b_usuario">Aventureiro</span>!</h3>
+                </div>
 
+                <div class="btn-nav-white">
+                    <a href="./cards.html">
+                        <h3>Domínios</h3>
+                    </a>
+                </div>
 
-        <div class="header-left">
+                <div class="btn-nav">
+                    <h3>Métricas</h3>
+                </div>
 
-            <h1>AquaTech</h1>
+                <div class="btn-nav-white">
+                    <a href="./mural.html">
+                        <h3>Anúncios da Guilda</h3>
+                    </a>
+                </div>
 
-            <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+                <div class="btn-logout" onclick="limparSessao()">
+                    <h3>Sair</h3>
+                </div>
             </div>
-
-            <div class="btn-nav-white">
-                <a href="cards.html">
-                    <h3>Aquários</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./dashboard.html">
-                    <h3>Gráficos</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
-                </a>
-            </div>
-
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
-            </div>
-
-        </div>
-
-        <div class="dash-right">
 
             <div class="avisos">
                 <div class="container">
@@ -116,7 +109,7 @@
 
             if (resposta.ok) {
                 window.alert("Post atualizado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
-                window.location = "/dashboard/mural.html"
+                window.location = "/pages/mural.html"
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
