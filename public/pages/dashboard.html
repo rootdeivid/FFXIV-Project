@@ -199,82 +199,12 @@
             // Criando estrutura para plotar gráfico - config
             const configClass = {
                 type: 'bar',
-                data: classData,
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'top',
-                            labels: {
-                                color: '#e6e6e6'
-                            }
-                        },
-                        title: {
-                            display: true,
-                            text: 'Classes Mais Populares',
-                            color: '#e6e6e6'
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            ticks: {
-                                color: '#e6e6e6'
-                            },
-                            grid: {
-                                color: 'rgba(230, 230, 230, 0.1)'
-                            }
-                        },
-                        x: {
-                            ticks: {
-                                color: '#e6e6e6'
-                            },
-                            grid: {
-                                color: 'rgba(230, 230, 230, 0.1)'
-                            }
-                        }
-                    }
-                }
+                data: classData
             };
 
             const configRacas = {
                 type: 'bar',
                 data: racasData,
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'top',
-                            labels: {
-                                color: '#e6e6e6'
-                            }
-                        },
-                        title: {
-                            display: true,
-                            text: 'Raças Mais Populares',
-                            color: '#e6e6e6'
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            ticks: {
-                                color: '#e6e6e6'
-                            },
-                            grid: {
-                                color: 'rgba(230, 230, 230, 0.1)'
-                            }
-                        },
-                        x: {
-                            ticks: {
-                                color: '#e6e6e6'
-                            },
-                            grid: {
-                                color: 'rgba(230, 230, 230, 0.1)'
-                            }
-                        }
-                    }
-                }
             };
 
             // Adicionando gráfico criado em div na tela
@@ -288,7 +218,7 @@
                 configClass
             );
 
-            setTimeout(() => atualizarGrafico(id_registro, dadosClass, dadosRace, myChart), 2000);
+            setTimeout(() => atualizarGrafico(id_registro, dadosClass, dadosRace, dashboardClass, dashboardRaces), 2000);
         }
 
 
