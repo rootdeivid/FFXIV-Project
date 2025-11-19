@@ -160,6 +160,12 @@ body {
     gap: 30px;
 }
 
+.dashboard-classe, .dashboard-racas {
+    display: flex;
+    
+
+}
+
 .display-none {
     display: none !important;
 }
