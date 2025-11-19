@@ -180,12 +180,12 @@
             console.log(resposta)
 
             // Inserindo valores recebidos em estrutura para plotar o gráfico
-            for (i = 0; i < resposta.length; i++) {
-                var registro = resposta[i];
-                labels.push(registro.momento_grafico);
-                dadosRace.datasets[0].data.push(registro.umidade);
-                dadosClass.datasets[1].data.push(registro.temperatura);
-            }
+            // for (i = 0; i < resposta.length; i++) {
+            //     var registro = resposta[i];
+            //     labels.push(registro.momento_grafico);
+            //     dadosRace.datasets[0].data.push(registro);
+            //     dadosClass.datasets[1].data.push(registro);
+            // }
 
             console.log('----------------------------------------------')
             console.log('O gráfico será plotado com os respectivos valores:')
@@ -199,22 +199,22 @@
             // Criando estrutura para plotar gráfico - config
             const configClass = {
                 type: 'bar',
-                data: classData
+                data: dadosClass
             };
 
             const configRacas = {
                 type: 'bar',
-                data: racasData,
+                data: dadosRace,
             };
 
             // Adicionando gráfico criado em div na tela
             let dashboardRaces = new Chart(
-                document.getElementById(`dashboard-racas`),
+                document.getElementById('dashboard-racas'),
                 configRacas
             );
 
             let dashboardClass = new Chart(
-                document.getElementById(`dashboard-classe`),
+                document.getElementById('dashboard-classe'),
                 configClass
             );
 
@@ -227,5 +227,8 @@
 
         //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
         //     Para ajustar o "select", ajuste o comando sql em src/models
+
+plotarGrafico();
+atualizarGrafico();
 
     </script>
