@@ -17,7 +17,7 @@ apelido VARCHAR(45),
 raca VARCHAR(10),
 email VARCHAR(50),
 senha VARCHAR(20),
-classe VARCHAR(10),
+classe VARCHAR(50),
 dataCenter VARCHAR(30),
 fkPersonagens INT,
 CONSTRAINT fkPersonagensUsuario FOREIGN KEY (fkPersonagens) 

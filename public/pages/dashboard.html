@@ -86,14 +86,15 @@
 
         //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
         //     Para ajustar o "select", ajuste o comando sql em src/models
-        function obterDadosGrafico(id_registro) {
-            fetch(`/medidas/ultimas/${id_registro}`, { cache: 'no-store' }).then(function (response) {
+        function obterDadosGrafico() {
+            fetch(`/medidas/ultimas`, 
+            { cache: 'no-store' }).then(function (response) {
                 if (response.ok) {
                     response.json().then(function (resposta) {
                         console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                         resposta.reverse();
 
-                        plotarGrafico(resposta, id_registro);
+                        plotarGrafico(resposta);
 
                     });
                 } else {
@@ -108,7 +109,7 @@
         // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
         // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
         // A função *plotarGrafico* também invoca a função *atualizarGrafico*
-        function plotarGrafico(resposta, id_registro) {
+        function plotarGrafico(resposta) {
 
             console.log('iniciando plotagem do gráfico...');
 
@@ -214,7 +215,7 @@
                 configClass
             );
 
-            setTimeout(() => atualizarGrafico(id_registro, dadosClass, dadosRace, dashboardClass, dashboardRaces), 2000);
+            // setTimeout(() => atualizarGrafico(dadosClass, dadosRace, dashboardClass, dashboardRaces), 2000);
         }
 
 
@@ -225,6 +226,6 @@
         //     Para ajustar o "select", ajuste o comando sql em src/models
 
         plotarGrafico();
-        atualizarGrafico();
+        obterDadosGrafico();
 
     </script>
