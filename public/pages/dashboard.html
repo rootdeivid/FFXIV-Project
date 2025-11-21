@@ -116,18 +116,12 @@
             // Criando estrutura para plotar gráfico - labels
             let labels = [];
 
-            // Criando estrutura para plotar gráfico - dados
-
-            // 'Hyur', 'Miqo\'te', 'Elezen', 'Lalafell', 'Roegadyn', 'Au Ra', 'Viera'
-
-            // [150, 135, 98, 87, 65, 72, 58]
-
-            // Número de Jogadores
+            let labelsClass = []
 
             let dadosRace = {
                 labels: labels,
                 datasets: [{
-                    label: '',
+                    label: 'Número de Jogadores',
                     data: [],
                     backgroundColor: [
                         'rgba(233, 69, 96, 0.7)',
@@ -152,10 +146,10 @@
             };
 
             let dadosClass = {
-                labels: ['Paladino', 'Mago Negro', 'Bardo', 'Dragoon', 'Ninja', 'Samurai', 'Monge'],
+                labels: labelsClass,
                 datasets: [{
                     label: 'Número de Jogadores',
-                    data: [120, 95, 87, 76, 65, 54, 42],
+                    data: [],
                     backgroundColor: [
                         'rgba(233, 69, 96, 0.7)',
                         'rgba(15, 52, 96, 0.7)',
@@ -185,14 +179,18 @@
             // Inserindo valores recebidos em estrutura para plotar o gráfico
             for (var i = 0; i < resposta.length; i++) {
                 var registro = resposta[i];
-                console.log(registro);
-                // labels[i] = registro.racas;
                 labels.push(registro.raca);
-                dadosRace.datasets[0].data.push(registro.raca);
+                labelsClass.push(registro.classes);
                 dadosRace.datasets[0].data.push(registro.quantidade);
-                   
+                // dadosClass.datasets[0].data.push(registro.classes);
             }
 
+            
+
+
+            // dadosRace.datasets[0].data.push(registro.raca);
+            // dadosClass.datasets[0].data.push(registro.quantidade);                 
+            
             console.log('----------------------------------------------')
             console.log('O gráfico será plotado com os respectivos valores:')
             console.log('Labels:')

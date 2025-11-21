@@ -3,7 +3,7 @@ var database = require("../database/config");
 function buscarUltimasMedidas(limite_linhas) {
 
     var instrucaoSql = `SELECT 
-        raca as raca, 
+        raca as raca,
         count(raca) as quantidade
                     FROM usuario
                     GROUP BY raca ORDER BY id DESC LIMIT ${limite_linhas}`;
