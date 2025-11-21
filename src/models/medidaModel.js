@@ -4,9 +4,9 @@ function buscarUltimasMedidas(limite_linhas) {
 
     var instrucaoSql = `SELECT 
         raca as raca, 
-        count(raca) as quantidade,
+        count(raca) as quantidade
                     FROM usuario
-                    ORDER BY id DESC LIMIT ${limite_linhas}`;
+                    GROUP BY raca ORDER BY id DESC LIMIT ${limite_linhas}`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

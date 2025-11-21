@@ -118,11 +118,17 @@
 
             // Criando estrutura para plotar gráfico - dados
 
+            // 'Hyur', 'Miqo\'te', 'Elezen', 'Lalafell', 'Roegadyn', 'Au Ra', 'Viera'
+
+            // [150, 135, 98, 87, 65, 72, 58]
+
+            // Número de Jogadores
+
             let dadosRace = {
-                labels: ['Hyur', 'Miqo\'te', 'Elezen', 'Lalafell', 'Roegadyn', 'Au Ra', 'Viera'],
+                labels: labels,
                 datasets: [{
-                    label: 'Número de Jogadores',
-                    data: [150, 135, 98, 87, 65, 72, 58],
+                    label: '',
+                    data: [],
                     backgroundColor: [
                         'rgba(233, 69, 96, 0.7)',
                         'rgba(15, 52, 96, 0.7)',
@@ -177,12 +183,15 @@
             console.log(resposta)
 
             // Inserindo valores recebidos em estrutura para plotar o gráfico
-            // for (i = 0; i < resposta.length; i++) {
-            //     var registro = resposta[i];
-            //     labels.push(registro.momento_grafico);
-            //     dadosRace.datasets[0].data.push(registro);
-            //     dadosClass.datasets[1].data.push(registro);
-            // }
+            for (var i = 0; i < resposta.length; i++) {
+                var registro = resposta[i];
+                console.log(registro);
+                // labels[i] = registro.racas;
+                labels.push(registro.raca);
+                dadosRace.datasets[0].data.push(registro.raca);
+                dadosRace.datasets[0].data.push(registro.quantidade);
+                   
+            }
 
             console.log('----------------------------------------------')
             console.log('O gráfico será plotado com os respectivos valores:')
@@ -225,7 +234,7 @@
         //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
         //     Para ajustar o "select", ajuste o comando sql em src/models
 
-        plotarGrafico();
+        // plotarGrafico();
         obterDadosGrafico();
 
     </script>
