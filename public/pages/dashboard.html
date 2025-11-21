@@ -180,7 +180,8 @@
             for (var i = 0; i < resposta.length; i++) {
                 var registro = resposta[i];
                 labels.push(registro.raca);
-                labelsClass.push(registro.classes);
+                labelsClass.push(registro.classe);
+                dadosClass.datasets[0].data.push(registro.classe);
                 dadosRace.datasets[0].data.push(registro.quantidade);
                 // dadosClass.datasets[0].data.push(registro.classes);
             }
