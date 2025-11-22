@@ -104,12 +104,147 @@
                 .catch(function (error) {
                     console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
                 });
+
+                fetch(`/medidas/tempo-real`, 
+            { cache: 'no-store' }).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta2) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta2)}`);
+                        resposta.reverse();
+
+                        plotarGrafico(resposta2);
+
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+                .catch(function (error) {
+                    console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+                });
         }
 
         // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
         // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
         // A função *plotarGrafico* também invoca a função *atualizarGrafico*
         function plotarGrafico(resposta) {
+
+            console.log('iniciando plotagem do gráfico...');
+
+            // Criando estrutura para plotar gráfico - labels
+            let labels = [];
+
+            let labelsClass = [];
+
+            let dadosRace = {
+                labels: labels,
+                datasets: [{
+                    label: 'Número de Jogadores',
+                    data: [],
+                    backgroundColor: [
+                        'rgba(233, 69, 96, 0.7)',
+                        'rgba(15, 52, 96, 0.7)',
+                        'rgba(26, 26, 46, 0.7)',
+                        'rgba(31, 97, 141, 0.7)',
+                        'rgba(47, 72, 88, 0.7)',
+                        'rgba(82, 109, 130, 0.7)',
+                        'rgba(107, 112, 92, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(233, 69, 96, 1)',
+                        'rgba(15, 52, 96, 1)',
+                        'rgba(26, 26, 46, 1)',
+                        'rgba(31, 97, 141, 1)',
+                        'rgba(47, 72, 88, 1)',
+                        'rgba(82, 109, 130, 1)',
+                        'rgba(107, 112, 92, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            };
+
+            let dadosClass = {
+                labels: labelsClass,
+                datasets: [{
+                    label: 'Número de Jogadores',
+                    data: [],
+                    backgroundColor: [
+                        'rgba(233, 69, 96, 0.7)',
+                        'rgba(15, 52, 96, 0.7)',
+                        'rgba(26, 26, 46, 0.7)',
+                        'rgba(31, 97, 141, 0.7)',
+                        'rgba(47, 72, 88, 0.7)',
+                        'rgba(82, 109, 130, 0.7)',
+                        'rgba(107, 112, 92, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(233, 69, 96, 1)',
+                        'rgba(15, 52, 96, 1)',
+                        'rgba(26, 26, 46, 1)',
+                        'rgba(31, 97, 141, 1)',
+                        'rgba(47, 72, 88, 1)',
+                        'rgba(82, 109, 130, 1)',
+                        'rgba(107, 112, 92, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            };
+
+            console.log('----------------------------------------------')
+            console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+            console.log(resposta)
+
+            // Inserindo valores recebidos em estrutura para plotar o gráfico
+            for (var i = 0; i < resposta.length; i++) {
+                var registro = resposta[i];
+                labels.push(registro.raca);
+                labelsClass.push(registro.classe);
+                dadosClass.datasets[0].data.push(registro.qtdClasse);
+                dadosRace.datasets[0].data.push(registro.quantidade);
+                // dadosClass.datasets[0].data.push(registro.classes);
+            }
+
+            
+
+
+            // dadosRace.datasets[0].data.push(registro.raca);
+            // dadosClass.datasets[0].data.push(registro.quantidade);                 
+            
+            console.log('----------------------------------------------')
+            console.log('O gráfico será plotado com os respectivos valores:')
+            console.log('Labels:')
+            console.log(labels)
+            console.log('Dados:')
+            console.log(dadosRace.datasets)
+            console.log(dadosClass.datasets)
+            console.log('----------------------------------------------')
+
+            // Criando estrutura para plotar gráfico - config
+            const configClass = {
+                type: 'bar',
+                data: dadosClass
+            };
+
+            const configRacas = {
+                type: 'bar',
+                data: dadosRace,
+            };
+
+            // Adicionando gráfico criado em div na tela
+            let dashboardRaces = new Chart(
+                document.getElementById('dashboard-racas'),
+                configRacas
+            );
+
+            let dashboardClass = new Chart(
+                document.getElementById('dashboard-classe'),
+                configClass
+            );
+
+            // setTimeout(() => atualizarGrafico(dadosClass, dadosRace, dashboardClass, dashboardRaces), 2000);
+        }
+
+        function plotarGrafico(resposta2) {
 
             console.log('iniciando plotagem do gráfico...');
 
@@ -225,6 +360,9 @@
 
             // setTimeout(() => atualizarGrafico(dadosClass, dadosRace, dashboardClass, dashboardRaces), 2000);
         }
+
+
+        
 
 
         // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
