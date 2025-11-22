@@ -2,11 +2,12 @@ var database = require("../database/config");
 
 function buscarUltimasMedidas(limite_linhas) {
 
-    var instrucaoSql = `SELECT 
-        raca as raca,
-        count(raca) as quantidade
-                    FROM usuario
-                    GROUP BY raca ORDER BY id DESC LIMIT ${limite_linhas}`;
+    var instrucaoSql = `SELECT
+	raca as raca,
+    classe AS classe,
+    COUNT(classe) AS qtdClasse,
+    COUNT(DISTINCT raca) AS quantidade
+    FROM usuario GROUP BY raca ORDER BY id DESC LIMIT ${limite_linhas};`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
