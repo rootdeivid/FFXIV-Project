@@ -3,9 +3,7 @@ var database = require("../database/config");
 function buscarUltimasMedidas(limite_linhas) {
 
     var instrucaoSql = `SELECT
-	raca as raca,
-    classe AS classe,
-    COUNT(classe) AS qtdClasse,
+    raca AS raca,
     COUNT(raca) AS quantidade
     FROM usuario GROUP BY raca ORDER BY id DESC LIMIT ${limite_linhas};`;
 
@@ -15,12 +13,10 @@ function buscarUltimasMedidas(limite_linhas) {
 
 function buscarMedidasEmTempoReal() {
 
-    var instrucaoSql = `SELECT 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico, 
-                        fk_aquario 
-                    ORDER BY id DESC LIMIT 1`;
+    var instrucaoSql = `SELECT
+    classe,
+    COUNT(classe) AS qtd
+    FROM usuario GROUP BY classe ORDER BY id DESC LIMIT 7;`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

@@ -16,7 +16,7 @@ function buscarUltimasMedidas(req, res) {
         }
     }).catch(function (erro) {
         console.log(erro);
-        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        console.log("Houve um erro ao buscar os dados.", erro.sqlMessage);
         res.status(500).json(erro.sqlMessage);
     });
 }
@@ -24,19 +24,19 @@ function buscarUltimasMedidas(req, res) {
 
 function buscarMedidasEmTempoReal(req, res) {
 
-    // var id_registro = req.params.id_registro;
+    var id = req
 
-    console.log(`Recuperando medidas em tempo real`);
+    console.log(`Verificando...`);
 
-    medidaModel.buscarMedidasEmTempoReal(id_registro).then(function (resultado) {
-        if (resultado.length > 0) {
-            res.status(200).json(resultado);
+    medidaModel.buscarMedidasEmTempoReal(id).then(function (resultado2) {
+        if (resultado2.length > 0) {
+            res.status(200).json(resultado2);
         } else {
             res.status(204).send("Nenhum resultado encontrado!")
         }
     }).catch(function (erro) {
         console.log(erro);
-        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        console.log("Houve um erro ao buscar os dados.", erro.sqlMessage);
         res.status(500).json(erro.sqlMessage);
     });
 }
