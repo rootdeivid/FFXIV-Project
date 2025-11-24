@@ -1,6 +1,6 @@
 var medidaModel = require("../models/medidaModel");
 
-function buscarUltimasMedidas(req, res) {
+function rankingRaceControl(req, res) {
 
     const limite_linhas = 7;
 
@@ -8,7 +8,7 @@ function buscarUltimasMedidas(req, res) {
 
     console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
 
-    medidaModel.buscarUltimasMedidas(limite_linhas).then(function (resultado) {
+    medidaModel.rankingRaceControl(limite_linhas).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -22,13 +22,13 @@ function buscarUltimasMedidas(req, res) {
 }
 
 
-function buscarMedidasEmTempoReal(req, res) {
+function rankingClassControl(req, res) {
 
     var id = req
 
     console.log(`Verificando...`);
 
-    medidaModel.buscarMedidasEmTempoReal(id).then(function (resultado2) {
+    medidaModel.rankingClassControl(id).then(function (resultado2) {
         if (resultado2.length > 0) {
             res.status(200).json(resultado2);
         } else {
@@ -42,7 +42,7 @@ function buscarMedidasEmTempoReal(req, res) {
 }
 
 module.exports = {
-    buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
+    rankingRaceControl,
+    rankingClassControl
 
 }

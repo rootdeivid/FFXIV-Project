@@ -1,6 +1,6 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(limite_linhas) {
+function rankingRaceControl(limite_linhas) {
 
     var instrucaoSql = `SELECT
     raca AS raca,
@@ -11,7 +11,7 @@ function buscarUltimasMedidas(limite_linhas) {
     return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoReal() {
+function rankingClassControl() {
 
     var instrucaoSql = `SELECT
     classe,
@@ -23,6 +23,6 @@ function buscarMedidasEmTempoReal() {
 }
 
 module.exports = {
-    buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
+    rankingRaceControl,
+    rankingClassControl
 }

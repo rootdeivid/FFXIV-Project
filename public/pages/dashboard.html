@@ -26,7 +26,6 @@
                 <div class="hello">
                     <h3>Olá, <span id="b_usuario">Aventureiro</span>!</h3>
                 </div>
-
                 <div class="btn-nav-white">
                     <a href="./cards.html">
                         <h3>Domínios</h3>
@@ -49,19 +48,13 @@
             </div>
 
             <div class="dash">
-                <div id="alerta">
-                    <!-- Alertas serão exibidos aqui -->
-                </div>
-
-                <div class="btns-dash" id="btnAquario">
-                    <!-- Os botões dos domínios serão gerados aqui -->
-                </div>
-
-                <div id="graficos">
-                    <h1>Ranking de classe mais escolhida:</h1>
-                    <canvas id="dashboard-classe"></canvas>
-                    <h1>Ranking de raça mais escolhida:</h1>
-                    <canvas id="dashboard-racas"></canvas>
+                <div id="containerDash">
+                    <div id="graficos">
+                        <h1>Ranking de classe mais escolhida:</h1>
+                        <canvas id="dashboard-classe"></canvas>
+                        <h1>Ranking de raça mais escolhida:</h1>
+                        <canvas id="dashboard-racas"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
@@ -76,7 +69,7 @@
         b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
         function obterDadosGrafico() {
-            fetch(`/medidas/ultimas`, 
+            fetch(`/medidas/rankingRace`, 
             { cache: 'no-store' }).then(function (response) {
                 if (response.ok) {
                     response.json().then(function (resposta) {
@@ -94,7 +87,7 @@
                     console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
                 });
 
-                fetch(`/medidas/tempo-real`, 
+                fetch(`/medidas/rankingClass`, 
             { cache: 'no-store' }).then(function (response2) {
                 if (response2.ok) {
                     response2.json().then(function (resposta2) {
@@ -113,17 +106,9 @@
                 });
         }
 
-        // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
-        // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
-        // A função *plotarGrafico* também invoca a função *atualizarGrafico*
         function graficoRace(resposta) {
 
-            console.log('iniciando plotagem do gráfico...');
-
-            // Criando estrutura para plotar gráfico - labels
             let labels = [];
-
-            // let labelsClass = [];
 
             let dadosRace = {
                 labels: labels,
@@ -152,7 +137,6 @@
                 }]
             };
 
-            // Inserindo valores recebidos em estrutura para plotar o gráfico
             for (var i = 0; i < resposta.length; i++) {
                 var registro = resposta[i];
                 labels.push(registro.raca);
@@ -164,7 +148,6 @@
                 data: dadosRace,
             };
 
-            // Adicionando gráfico criado em div na tela
             let dashboardRaces = new Chart(
                 document.getElementById('dashboard-racas'),
                 configRacas
@@ -203,14 +186,12 @@
                 }]
             };
 
-            // Inserindo valores recebidos em estrutura para plotar o gráfico
             for (var i = 0; i < resposta2.length; i++) {
                 var registro2 = resposta2[i];
                 labelsClass.push(registro2.classe);
                 dadosClass.datasets[0].data.push(registro2.qtd);    
             }
 
-            // Criando estrutura para plotar gráfico - config
             const configClass = {
                 type: 'bar',
                 data: dadosClass

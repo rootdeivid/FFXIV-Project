@@ -25,12 +25,10 @@ body {
 }
 
 .header-left {
-    /* height: 100vh; */
     width: 280px;
     background-color: #1a1a2e;
     padding: 30px 20px;
     display: flex;
-    /* position: sticky; */
     flex-direction: column;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
     border-right: 2px solid #4a0e4e;
@@ -78,6 +76,10 @@ body {
     border: 2px solid #ffcc00;
 }
 
+.btn-nav a {
+    text-decoration: none;
+}
+
 .btn-nav-white {
     background-color: #2a2a4a;
     border: 2px solid #4a0e4e;
@@ -105,97 +107,3 @@ body {
     transform: translateY(-3px);
 }
 
-.dash {
-    flex: 1;
-    padding: 30px;
-    background-color: rgba(26, 26, 46, 0.8);
-    overflow-y: auto;
-}
-
-#containerDash {
-    margin-bottom: 20px;
-    padding: 15px;
-    border-radius: 8px;
-    background-color: #2a2a4a;
-    border-left: 4px solid #ffcc00b0;
-}
-
-.btns-dash {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-bottom: 30px;
-}
-
-.btn-chart {
-    padding: 12px 20px;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-weight: bold;
-    font-size: 0.9rem;
-}
-
-.btn-white {
-    background-color: #2a2a4a;
-    color: #e0e0e0;
-    border: 2px solid #4a0e4e;
-}
-
-.btn-pink {
-    background: linear-gradient(135deg, #4a0e4e, #6a1a6e);
-    color: #ffcc00;
-    border: 2px solid #ffcc00;
-    box-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
-}
-
-.btn-chart:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(255, 204, 0, 0.3);
-}
-
-/* Gráficos */
-#graficos {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-.dashboard-classe, .dashboard-racas {
-    display: flex;
-    
-
-}
-
-.display-none {
-    display: none !important;
-}
-
-.display-block {
-    display: block !important;
-}
-
-.tituloGraficos {
-    color: #ffcc00;
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #4a0e4e;
-}
-
-.graph {
-    background-color: #1a1a2e;
-    padding: 20px;
-    border-radius: 10px;
-    border: 2px solid #4a0e4e;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-}
-
-.label-captura {
-    margin-top: 15px;
-    padding: 10px;
-    background-color: #2a2a4a;
-    border-radius: 5px;
-    font-size: 0.9rem;
-}
