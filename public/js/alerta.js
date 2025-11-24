@@ -1,7 +1,7 @@
 var alertas = [];
 
 function obterdados(id_registro) {
-    fetch(`/medidas/tempo-real/${id_registro}`)
+    fetch(`/medidas/rankingClass/${id_registro}`)
         .then(resposta => {
             if (resposta.status == 200) {
                 resposta.json().then(resposta => {
