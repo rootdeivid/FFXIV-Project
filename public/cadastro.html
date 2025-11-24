@@ -103,10 +103,6 @@
   let listaCadastro = [];
 
   function cadastrar() {
-    // aguardar();
-
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
     var nomeVar = nome_input.value;
     var ApelidoVar = apelido_input.value;
     var emailVar = email_input.value;
@@ -116,7 +112,7 @@
     var classeVar = select_class.value;
     var dataVar = select_dataCenter.value;
 
-    // Verificando se há algum campo em branco
+    
     if (
       nomeVar == '' ||
       ApelidoVar == '' ||
@@ -144,8 +140,6 @@
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
         nomeServer: nomeVar,
         apelidoServer: ApelidoVar,
         emailServer: emailVar,

@@ -44,11 +44,39 @@
                 </div>
             </div>
 
+            <section>
+
+                Seu apelido: 
+
+                <div class="nickname" id="spaceNick"></div>
+
+            </section>
+
 </body>
 
 <script>
 
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+    function obterDadosPerfil() {
+            fetch(`/buscar`, 
+            { cache: 'no-store' }).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        resposta.reverse();
+
+                        graficoRace(resposta);
+
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+                .catch(function (error) {
+                    console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+                })};
+
 
 </script>
 
