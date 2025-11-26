@@ -11,12 +11,6 @@ body {
     line-height: 1.6;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
 .navbar {
     background-image: url(../assets/imgs/navbar.jpg);
     background-size: 100% auto;
@@ -61,15 +55,20 @@ body {
     background: linear-gradient(90deg, #1a1a2e, #4a0e4e, #1a1a2e);
 }
 
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
 
 .header {
     text-align: center;
-    padding: 60px 0 40px;
+    padding: 40px 0 20px;
 }
 
 .header h1 {
     font-size: 3rem;
-    margin-bottom: 15px;
+    margin-bottom: 1px;
     color: #ffcc00;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
@@ -113,7 +112,8 @@ body {
     font-size: 2.2rem;
     margin-bottom: 30px;
     color: #ffcc00;
-    border-bottom: 2px solid #4a0e4e;
+    border-bottom: 2px solid white;
+    /* 4a0e4e */
     padding-bottom: 10px;
 }
 

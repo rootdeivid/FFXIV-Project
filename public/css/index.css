@@ -166,7 +166,6 @@ body {
 .expansion-card {
     background-color: #1a1a2e;
     border-radius: 10px;
-    overflow: hidden;
     width: 300px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
@@ -228,7 +227,6 @@ body {
 .footer-nav a {
     color: #e0e0e0;
     text-decoration: none;
-    transition: color 0.3s;
 }
 
 .footer-copyright {
