@@ -39,7 +39,6 @@
                          Assim que inserir vá para o script abaixo.
                      -->
             Nome: <input id="nome_input" type="text" placeholder="Seu nome" />
-            Apelido no jogo: <input id="apelido_input" type="text" placeholder="Apelido" />
             E-mail: <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
             Senha: <input id="senha_input" type="password" placeholder="******" />
             Confirmação da Senha: <input id="confirmacao_senha_input" type="password" placeholder="******" />
@@ -104,18 +103,28 @@
 
   function cadastrar() {
     var nomeVar = nome_input.value;
-    var ApelidoVar = apelido_input.value;
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
     var racaVar = select_raca.value;
     var classeVar = select_class.value;
     var dataVar = select_dataCenter.value;
+    var fk_classe = '';
 
+    if (classeVar == 'Guerreiro') {
+      fk_classe = 101;
+    } else if (classeVar == 'Monge') {
+      fk_classe = 102;
+    } else if (classeVar == 'Mago') {
+      fk_classe = 101;
+    } else if (classeVar == 'Bardo') {
+      fk_classe = 113;
+    } else if (classeVar == 'Invocador') {
+      fk_classe = 117;
+    }
     
     if (
       nomeVar == '' ||
-      ApelidoVar == '' ||
       emailVar == '' ||
       senhaVar == '' ||
       confirmacaoSenhaVar == '' ||
@@ -141,12 +150,12 @@
       },
       body: JSON.stringify({
         nomeServer: nomeVar,
-        apelidoServer: ApelidoVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
         classeServer: classeVar,
         dataCenterServer: dataVar,
-        racaServer: racaVar
+        racaServer: racaVar,
+        fkClasse: fk_classe
       }),
     })
       .then(function (resposta) {
