@@ -48,38 +48,42 @@
                 </div>
             </div>
 
-            <section>
-
-                Seu apelido:
-
-                <div class="nickname" id="spaceNick"></div>
 
 
-            </section>
+            <div class="dash">
+                <div id="containerDash">
+                    <div id="graficos">
+                        <canvas id="dashboard">
+                    </div>
+                </div>
+            </div>
 
-            <canvas id="dashboard">
+
         </div>
 </body>
 
 <script>
 
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-
-    // Ajustar fetch, inserir imagens no banco de dados ou via lista. 
-    // KPI para media de poder da classe, via calculo e divisao do total de atributos.
+    var idUsuario = sessionStorage.ID_USUARIO;
 
     function obterDadosPerfil() {
-        fetch(`/classe/classes/`,
+        fetch(`/classe/classes/${idUsuario}`,
             { cache: 'no-store' }).then(function (response) {
                 if (response.ok) {
-                    response.json().then(function (classe) {
-                        console.log(`Dados recebidos: ${JSON.stringify(classe)}`);
-                        classe.reverse();
+                    response.json()
+                        .then(function (resposta) {
+                            console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                            resposta.reverse();
 
-                        showCharacter(classe);
+                            showCharacter(resposta);
 
-                    });
-                } else {
+                        })
+                        .catch(function (error) {
+                            console.error(`Erro no then obtenção dos dados p/ gráfico: ${error.message}`);
+                        })
+                }
+                else {
                     console.error('Nenhum dado encontrado ou erro na API');
                 }
             })
@@ -88,39 +92,52 @@
             })
     };
 
-    function showCharacter(classe) {
-    let labels = ['Força', 'Destreza', 'Vitalidade', 'Inteligência'];
-    
-    let dados = {
-        labels: labels,
-        datasets: [{
-            label: classe[0].nome,
-            data: [
-                classe[0].forca,
-                classe[0].destreza, 
-                classe[0].vitalidade,
-                classe[0].inteligencia
+    function showCharacter(resposta) {
+
+        console.log(resposta)
+
+        let dados = {
+            labels: [
+                'Forca',
+                'Destreza',
+                'Vitalidade',
+                'Inteligencia'
             ],
-            fill: true,
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgb(255, 99, 132)',
-            pointBackgroundColor: 'rgb(255, 99, 132)',
-            pointBorderColor: '#fff',
-            pointHoverBackgroundColor: '#fff',
-            pointHoverBorderColor: 'rgb(255, 99, 132)'
-        }]
-    };
+            datasets: [{
+                label: 'Atributos de sua classe',
+                data: [],
+                fill: true,
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgb(255, 99, 132)',
+                pointBackgroundColor: 'rgb(255, 99, 132)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(255, 99, 132)'
+            }]
+        };
 
-    const configRacas = {
-        type: 'radar',
-        data: dados,
-    };
+        for (var i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            // console.log(registro);
 
-    let dashboardRaces = new Chart(
-        document.getElementById('dashboard'),
-        configRacas
-    );
-}
+            dados.datasets[0].data.push(registro.forca);
+            dados.datasets[0].data.push(registro.destreza);
+            dados.datasets[0].data.push(registro.vitalidade);
+            dados.datasets[0].data.push(registro.inteligencia);
+
+            console.log(dados.datasets[0].data)
+        }
+
+        const config = {
+            type: 'radar',
+            data: dados,
+        };
+
+        let dashboardRaces = new Chart(
+            document.getElementById('dashboard'),
+            config
+        );
+    }
     obterDadosPerfil();
 
 </script>

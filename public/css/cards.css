@@ -12,6 +12,27 @@ body {
     min-height: 100vh;
 }
 
+.dash {
+    flex: 1;
+    padding: 30px;
+    background-color: rgba(26, 26, 46, 0.8);
+    overflow-y: auto;
+}
+
+#containerDash {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #2a2a4a;
+    border-left: 4px solid #ffcc00b0;
+}
+
+#graficos {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
 .overlay {
     background-color: rgba(10, 10, 26, 0.9);
     min-height: 100vh;

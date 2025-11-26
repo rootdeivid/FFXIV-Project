@@ -23,7 +23,8 @@ function listarClasses(req, res) {
 
 function buscarPorId(req, res) {
   var id = req.params.id;
-
+  console.log('ID no controller:', id); 
+  
   classeModel.buscarPorId(id).then((resultado) => {
     res.status(200).json(resultado);
   });
