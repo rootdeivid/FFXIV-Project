@@ -9,7 +9,6 @@
     <title>Eorzea Analytics | Perfil </title>
     <link rel="stylesheet" href="../css/cards.css">
     <script src="../js/sessao.js"></script>
-    <script src="../js/alerta.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link
@@ -50,6 +49,23 @@
 
             <div class="dash">
                 <div id="containerDash">
+                    <div id="KPI">
+
+
+                        <div class="kpi-container">
+                            <div class="kpi-card">
+                                <h3>Sua Classe</h3>
+                                <div class="kpi-value" id="kpi_classe">-</div>
+                            </div>
+
+                            <div class="kpi-card">
+                                <h3>Média de Atributos</h3>
+                                <div class="kpi-value" id="kpi_media">-</div>
+                                <p> Força, Destreza, Vitalidade, Inteligência </p>
+                            </div>
+                        </div>
+                    </div>
+
                     <div id="graficos">
                         <canvas id="dashboard">
                     </div>
@@ -92,7 +108,7 @@
 
     function showCharacter(resposta) {
 
-        console.log(resposta)
+        let nomeClasse = [];
 
         let dados = {
             labels: [
@@ -121,7 +137,7 @@
             dados.datasets[0].data.push(registro.destreza);
             dados.datasets[0].data.push(registro.vitalidade);
             dados.datasets[0].data.push(registro.inteligencia);
-
+            nomeClasse.push(registro.nome);
         }
 
         const config = {
@@ -133,7 +149,17 @@
             document.getElementById('dashboard'),
             config
         );
+
+        
+        const media = (dados.datasets[0].data[0] + dados.datasets[0].data[1] + dados.datasets[0].data[2] + dados.datasets[0].data[3]) / 4;
+
+        kpi_classe.innerHTML = nomeClasse;
+
+        
+        kpi_media.innerHTML = Math.round(media);
+
     }
+
     obterDadosPerfil();
 
 </script>
