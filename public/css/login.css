@@ -141,6 +141,7 @@ body {
 .navbar {
     background-image: url(../assets/imgs/navbar.jpg);
     background-size: 100% auto;
+    background-position: top;
     color: black;
     background-color: #1a1a2e;
     padding: 10px 0;

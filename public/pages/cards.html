@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eorzea Analytics | Dominios </title>
+    <title>Eorzea Analytics | Perfil </title>
     <link rel="stylesheet" href="../css/cards.css">
     <script src="../js/sessao.js"></script>
     <script src="../js/alerta.js"></script>
@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="btn-nav">
-                    <h3>Domínios</h3>
+                    <h3>Perfil</h3>
                 </div>
 
                 <div class="btn-nav-white">
@@ -47,8 +47,6 @@
                     <h3>Sair</h3>
                 </div>
             </div>
-
-
 
             <div class="dash">
                 <div id="containerDash">
@@ -104,7 +102,7 @@
                 'Inteligencia'
             ],
             datasets: [{
-                label: 'Atributos de sua classe',
+                label: 'Atributos',
                 data: [],
                 fill: true,
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
@@ -118,14 +116,12 @@
 
         for (var i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
-            // console.log(registro);
 
             dados.datasets[0].data.push(registro.forca);
             dados.datasets[0].data.push(registro.destreza);
             dados.datasets[0].data.push(registro.vitalidade);
             dados.datasets[0].data.push(registro.inteligencia);
 
-            console.log(dados.datasets[0].data)
         }
 
         const config = {
