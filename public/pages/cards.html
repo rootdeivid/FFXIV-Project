@@ -11,8 +11,12 @@
     <script src="../js/sessao.js"></script>
     <script src="../js/alerta.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <div class="overlay">
         <div class="janela">
@@ -24,12 +28,12 @@
                 </div>
 
                 <div class="btn-nav">
-                        <h3>Domínios</h3>
+                    <h3>Domínios</h3>
                 </div>
 
                 <div class="btn-nav-white">
                     <a href="./dashboard.html">
-                    <h3>Métricas</h3>
+                        <h3>Métricas</h3>
                     </a>
                 </div>
 
@@ -46,37 +50,78 @@
 
             <section>
 
-                Seu apelido: 
+                Seu apelido:
 
                 <div class="nickname" id="spaceNick"></div>
 
+
             </section>
 
+            <canvas id="dashboard">
+        </div>
 </body>
 
 <script>
 
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
+    // Ajustar fetch, inserir imagens no banco de dados ou via lista. 
+    // KPI para media de poder da classe, via calculo e divisao do total de atributos.
+
     function obterDadosPerfil() {
-            fetch(`/buscar`, 
+        fetch(`/classe/classes/`,
             { cache: 'no-store' }).then(function (response) {
                 if (response.ok) {
-                    response.json().then(function (resposta) {
-                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                        resposta.reverse();
+                    response.json().then(function (classe) {
+                        console.log(`Dados recebidos: ${JSON.stringify(classe)}`);
+                        classe.reverse();
 
-                        graficoRace(resposta);
+                        showCharacter(classe);
 
                     });
                 } else {
                     console.error('Nenhum dado encontrado ou erro na API');
                 }
             })
-                .catch(function (error) {
-                    console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-                })};
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            })
+    };
 
+    function showCharacter(classe) {
+    let labels = ['Força', 'Destreza', 'Vitalidade', 'Inteligência'];
+    
+    let dados = {
+        labels: labels,
+        datasets: [{
+            label: classe[0].nome,
+            data: [
+                classe[0].forca,
+                classe[0].destreza, 
+                classe[0].vitalidade,
+                classe[0].inteligencia
+            ],
+            fill: true,
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgb(255, 99, 132)',
+            pointBackgroundColor: 'rgb(255, 99, 132)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgb(255, 99, 132)'
+        }]
+    };
+
+    const configRacas = {
+        type: 'radar',
+        data: dados,
+    };
+
+    let dashboardRaces = new Chart(
+        document.getElementById('dashboard'),
+        configRacas
+    );
+}
+    obterDadosPerfil();
 
 </script>
 
