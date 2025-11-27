@@ -15,7 +15,7 @@ function obterdados(id_registro) {
             }
         })
         .catch(function (error) {
-            console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
 
 }

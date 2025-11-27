@@ -82,5 +82,5 @@ LEFT JOIN classes c ON u.fk_classe = c.id;
 
 SELECT u.id, u.classe, u.fk_classe, c.nome FROM usuario u JOIN classes c ON u.fk_classe = c.id;
 
-SELECT u.id, c.forca, c.destreza, c.vitalidade, c.destreza, c.inteligencia FROM classes c JOIN usuario u ON u.fk_classe = c.id 
+SELECT u.id, c.forca, c.destreza, c.vitalidade, c.inteligencia FROM classes c JOIN usuario u ON u.fk_classe = c.id 
 WHERE c.nome = u.classe AND u.id = 6;

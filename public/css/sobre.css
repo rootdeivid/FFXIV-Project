@@ -47,7 +47,6 @@ body {
     color: black;
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s;
 }
 
 .nav-separator {
@@ -90,6 +89,7 @@ body {
 }
 
 .raid-completed {
+    text-align: center;
     margin: 40px 0 20px;
     font-size: 24px;
     color: #ffcc00;
@@ -141,86 +141,118 @@ body {
 .about-section {
     padding: 60px 0;
     background-color: #0f0f1f;
+    position: relative;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 .profile-container {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 40px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.myprofile-image {
-    flex: 0 0 300px;
+    position: relative;
 }
 
 .photo-container {
+    position: absolute;
+    left: 50px;
+    top: 14%;
     background-image: url(../assets/imgs/memyselfandi.jpeg);
     background-position: center;
-    width: 300px;
-    height: 500px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 250px;
+    height: 400px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+
+.photo-container2 {
+    background-image: url(../assets/imgs/characterMywan.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 250px;
+    height: 400px;
 }
 
 .profile-description {
-    text-align: justify;
     margin-bottom: 20px;
     line-height: 1.6;
     font-size: 1.1rem;
+    color: #e0e0e0;
 }
 
-.history-content p {
-    margin-bottom: 20px;
-    line-height: 1.6;
-    font-size: 1.1rem;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
+.icon-steam {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.history-section {
+    padding: 60px 0;
+    background-color: #0f0f1f;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.raid-completed {
+    text-align: center;
+    color: #ffcc00;
+    font-size: 2rem;
+    margin-bottom: 40px;
+    font-weight: bold;
 }
 
 .raids-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 280px));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 30px;
-    margin-top: 30px;
 }
 
 .raid-item {
     background-color: #1a1a2e;
     border-radius: 10px;
-    overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease;
-}
-
-.raid-item:hover {
-    transform: translateY(-5px);
 }
 
 .raid-image {
-    height: 150px;
+    height: 200px;
+    background-color: #0f0f1f;
+}
+
+.raid-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 100%;
     background-color: #0f0f1f;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.image-placeholder {
     color: #aaa;
-    font-weight: bold;
-    font-size: 1.2rem;
 }
 
 .raid-info {
-    padding: 15px;
+    padding: 20px;
 }
 
 .raid-info h4 {
     margin: 0 0 10px;
     color: #ffcc00;
+    font-size: 1.2rem;
 }
 
 .raid-info p {
@@ -246,20 +278,14 @@ body {
 
 .videos-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 40px;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.video-item {
-    background-color: #1a1a2e;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    grid-template-columns: repeat(minmax(400px, 1fr));
+    gap: 100px; 
+    max-width: 100%;
+    margin: auto;
 }
 
 .video-item h3 {
+    width: 100%;
     margin: 0;
     padding: 20px;
     background-color: #4a0e4e;
@@ -268,24 +294,9 @@ body {
     font-size: 1.3rem;
 }
 
-.video-wrapper {
-    height: 225px;
-    background-color: #0a0a1a;
+.icon-steam {
     display: flex;
-    align-items: center;
+    width: 100%;
     justify-content: center;
 }
 
-.video-container {
-    color: #aaa;
-    font-weight: bold;
-    font-size: 1.1rem;
-    text-align: center;
-    padding: 0 20px;
-}
-
-.video-text {
-    padding: 20px;
-    line-height: 1.6;
-    font-size: 1rem;
-}
