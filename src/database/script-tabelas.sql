@@ -29,13 +29,13 @@ SELECT
                     FROM usuario
                     GROUP BY raca ORDER BY id DESC LIMIT 7;
 
-INSERT INTO usuario(nome, raca, email, senha, classe, dataCenter, fk_classe) VALUES 
-('Luis', 'Hyur', 'luis@email.com', 'senha1234', 'Mago', 'Norte America', 116),                    
-('Luis Gomes', 'Miqote', 'luisparaiso@email.com', 'senha1234', 'Monge', 'Oceania', 108),                    
-('Jose', 'Aura', 'jose@email.com', 'senha1234', 'Bardo', 'Norte America', 113),                    
-('Matheus', 'Elezen', 'matheus@email.com', 'senha1234', 'Ladino', 'Norte America', 110),                    
-('Deivid', 'Aura', 'deivid@email.com', 'senha1234', 'Samurai', 'Norte America', 111),                    
-('Nathalia', 'Miqote', 'nath@email.com', 'senha1234', 'Mago', 'Norte America', 116);
+INSERT INTO usuario(nome, raca, email, senha, classe, dataCenter) VALUES 
+('Luis', 'Hyur', 'luis@email.com', 'senha1234', 'Mago', 'Norte America'),                    
+('Luis Gomes', 'Miqote', 'luisparaiso@email.com', 'senha1234', 'Monge', 'Oceania'),                    
+('Jose', 'Aura', 'jose@email.com', 'senha1234', 'Bardo', 'Norte America'),                    
+('Matheus', 'Elezen', 'matheus@email.com', 'senha1234', 'Ladino', 'Norte America'),                    
+('Deivid', 'Aura', 'deivid@email.com', 'senha1234', 'Samurai', 'Norte America'),                    
+('Nathalia', 'Miqote', 'nath@email.com', 'senha1234', 'Mago', 'Norte America');
 
 CREATE TABLE classes (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -64,8 +64,8 @@ INSERT INTO classes (nome, tipo, forca, destreza, vitalidade, inteligencia) VALU
 ('Bardo', 'Ranged', 200, 450, 390, 200),
 ('Machinginist', 'Ranged', 200, 450, 390, 200),
 ('Dancer', 'Ranged', 200, 450, 390, 200),
-('Mago Preto', 'Magico', 200, 390, 390, 450),
-('Summoner', 'Magico', 200, 390, 390, 450),
+('Mago', 'Magico', 200, 390, 390, 450),
+('Invocador', 'Magico', 200, 390, 390, 450),
 ('Red Mage', 'Magico', 200, 390, 390, 450),
 ('Blue Mage', 'Magico', 200, 390, 390, 450);
 
