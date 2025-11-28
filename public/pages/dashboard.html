@@ -143,6 +143,21 @@
             const configRacas = {
                 type: 'bar',
                 data: dadosRace,
+                options: {
+                    color: 'white',
+                    scales: {
+                        x: {
+                            ticks: {
+                                color: 'white',
+                            }
+                        },
+                        y: {
+                            ticks: {
+                                color: 'white',
+                            }
+                        }
+                    }
+                }
             };
 
             let dashboardRaces = new Chart(
@@ -212,6 +227,7 @@
             let dashboardClass = new Chart(
                 document.getElementById('dashboard-classe'),
                 configClass
+                
             );
 
         }

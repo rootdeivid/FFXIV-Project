@@ -9,7 +9,6 @@ body {
   background-color: #0a0a1a;
   color: #e0e0e0;
   line-height: 1.6;
-  background-image: url('../assets/imgs/');
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
@@ -142,13 +141,6 @@ body {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
 
-.div-form label {
-  color: #e0e0e0;
-  font-weight: 500;
-  display: block;
-  margin-bottom: 8px;
-}
-
 #titulo {
   width: 100%;
   padding: 12px;
@@ -279,23 +271,3 @@ body {
   padding-top: 10px;
 }
 
-.feed-container:empty::before {
-  content: "Nenhum anúncio publicado ainda. Seja o primeiro a compartilhar!";
-  color: #a0a0a0;
-  text-align: center;
-  padding: 40px;
-  font-style: italic;
-  background-color: #1a1a2e;
-  border: 2px dashed #4a0e4e;
-  border-radius: 10px;
-}
-
-@media (max-width: 768px) {
-    .janela {
-        flex-direction: column;
-    }
-    
-    .header-left {
-        width: 100%;
-    }
-}

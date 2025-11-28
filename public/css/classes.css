@@ -46,7 +46,6 @@ body {
     color: black;
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s;
 }
 
 .nav-separator {
@@ -128,7 +127,6 @@ body {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s;
     border: 1px solid #2a2a4a;
 }
 
@@ -213,7 +211,7 @@ body {
 }
 
 .footer {
-    background-color: #0f0f1f;
+    background-color: #1a1a2e;
     padding: 40px 0 20px;
 }
 
@@ -243,11 +241,10 @@ body {
 .footer-nav a {
     color: #e0e0e0;
     text-decoration: none;
-    transition: color 0.3s;
 }
 
 .footer-copyright {
-    color: #777;
+    color: white;
     font-size: 0.9rem;
     text-align: center;
     margin-top: 20px;

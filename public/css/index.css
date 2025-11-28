@@ -54,12 +54,6 @@ body {
     transition: color 0.3s;
 }
 
-.nav-separator {
-    height: 6px;
-    width: 100%;
-    background: linear-gradient(90deg, #1a1a2e, #4a0e4e, #1a1a2e);
-}
-
 .intro-section {
     background-image: url(../assets/imgs/birthday21.jpg);
     background-size: 100%;
@@ -111,7 +105,6 @@ body {
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
 }
 
-/* Banner convite */
 .banner-section {
     background-image: url(../assets/imgs/maybanner3.jpg);
     padding: 60px 0;
@@ -121,7 +114,7 @@ body {
 .banner-title {
     font-size: 2.5rem;
     margin-bottom: 20px;
-    color: #ffcc00;
+    color: black;
 }
 
 .banner-text {
@@ -197,7 +190,7 @@ body {
 }
 
 .footer {
-    background-color: #0f0f1f;
+    background-color: #1a1a2e;
     padding: 40px 0 20px;
 }
 
@@ -230,7 +223,7 @@ body {
 }
 
 .footer-copyright {
-    color: #777;
+    color: white;
     font-size: 0.9rem;
     text-align: center;
     margin-top: 20px;

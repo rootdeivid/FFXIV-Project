@@ -155,17 +155,15 @@ body {
     box-shadow: 0 5px 15px rgba(255, 204, 0, 0.3);
 }
 
-/* Gráficos */
 #graficos {
     display: flex;
     flex-direction: column;
     gap: 30px;
 }
 
-.dashboard-classe, .dashboard-racas {
+.dashboard-classe, 
+.dashboard-racas {
     display: flex;
-    
-
 }
 
 .display-none {
