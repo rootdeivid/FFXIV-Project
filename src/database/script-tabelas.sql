@@ -29,13 +29,13 @@ SELECT
                     FROM usuario
                     GROUP BY raca ORDER BY id DESC LIMIT 7;
 
-INSERT INTO usuario(nome, apelido, raca, email, senha, classe, dataCenter) VALUES 
-('Luis', 'Luizao', 'Hyur', 'luis@email.com', 'senha1234', 'Mago', 'Norte America'),                    
-('Luis Gomes', 'NaoParaiso', 'Miqote', 'luisparaiso@email.com', 'senha1234', 'Monge', 'Oceania'),                    
-('Jose', 'Policial', 'Aura', 'jose@email.com', 'senha1234', 'Bardo', 'Norte America'),                    
-('Matheus', 'Valle', 'Elezen', 'matheus@email.com', 'senha1234', 'Ninja', 'Norte America'),                    
-('Deivid', 'Mywan', 'Aura', 'deivid@email.com', 'senha1234', 'Samurai', 'Norte America'),                    
-('Nathalia', 'nana', 'Miqote', 'nath@email.com', 'senha1234', 'Mago Negro', 'Norte America');
+INSERT INTO usuario(nome, raca, email, senha, classe, dataCenter, fk_classe) VALUES 
+('Luis', 'Hyur', 'luis@email.com', 'senha1234', 'Mago', 'Norte America', 116),                    
+('Luis Gomes', 'Miqote', 'luisparaiso@email.com', 'senha1234', 'Monge', 'Oceania', 108),                    
+('Jose', 'Aura', 'jose@email.com', 'senha1234', 'Bardo', 'Norte America', 113),                    
+('Matheus', 'Elezen', 'matheus@email.com', 'senha1234', 'Ladino', 'Norte America', 110),                    
+('Deivid', 'Aura', 'deivid@email.com', 'senha1234', 'Samurai', 'Norte America', 111),                    
+('Nathalia', 'Miqote', 'nath@email.com', 'senha1234', 'Mago', 'Norte America', 116);
 
 CREATE TABLE classes (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -58,7 +58,7 @@ INSERT INTO classes (nome, tipo, forca, destreza, vitalidade, inteligencia) VALU
 ('Sage', 'Healer', 200, 390, 390, 400),
 ('Monge', 'Melee', 400, 450, 390, 200),
 ('Dragoon', 'Melee', 450, 400, 390, 200),
-('Ninja', 'Melee', 390, 450, 390, 200),
+('Ladino', 'Melee', 390, 450, 390, 200),
 ('Samurai', 'Melee', 450, 400, 390, 200),
 ('Reaper', 'Melee', 400, 450, 390, 200),
 ('Bardo', 'Ranged', 200, 450, 390, 200),
