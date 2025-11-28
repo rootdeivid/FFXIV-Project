@@ -11,7 +11,9 @@
     <script src="../js/sessao.js"></script>
     <script src="../js/alerta.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -60,42 +62,42 @@
     </div>
 
     <script>
-    
+
         b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
         function obterDadosGrafico() {
-            fetch(`/medidas/rankingRace`, 
-            { cache: 'no-store' }).then(function (response) {
-                if (response.ok) {
-                    response.json().then(function (resposta) {
-                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                        resposta.reverse();
+            fetch(`/medidas/rankingRace`,
+                { cache: 'no-store' }).then(function (response) {
+                    if (response.ok) {
+                        response.json().then(function (resposta) {
+                            console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                            resposta.reverse();
 
-                        graficoRace(resposta);
+                            graficoRace(resposta);
 
-                    });
-                } else {
-                    console.error('Nenhum dado encontrado ou erro na API');
-                }
-            })
+                        });
+                    } else {
+                        console.error('Nenhum dado encontrado ou erro na API');
+                    }
+                })
                 .catch(function (error) {
                     console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
                 });
 
-                fetch(`/medidas/rankingClass`, 
-            { cache: 'no-store' }).then(function (response2) {
-                if (response2.ok) {
-                    response2.json().then(function (resposta2) {
-                        console.log(`Dados recebidos: ${JSON.stringify(resposta2)}`);
-                        resposta2.reverse();
+            fetch(`/medidas/rankingClass`,
+                { cache: 'no-store' }).then(function (response2) {
+                    if (response2.ok) {
+                        response2.json().then(function (resposta2) {
+                            console.log(`Dados recebidos: ${JSON.stringify(resposta2)}`);
+                            resposta2.reverse();
 
-                        plotarGrafico(resposta2);
+                            plotarGrafico(resposta2);
 
-                    });
-                } else {
-                    console.error('Nenhum dado encontrado ou erro na API');
-                }
-            })
+                        });
+                    } else {
+                        console.error('Nenhum dado encontrado ou erro na API');
+                    }
+                })
                 .catch(function (error) {
                     console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
                 });
@@ -184,12 +186,27 @@
             for (var i = 0; i < resposta2.length; i++) {
                 var registro2 = resposta2[i];
                 labelsClass.push(registro2.classe);
-                dadosClass.datasets[0].data.push(registro2.qtd);    
+                dadosClass.datasets[0].data.push(registro2.qtd);
             }
 
             const configClass = {
                 type: 'bar',
-                data: dadosClass
+                data: dadosClass,
+                options: {
+                    color: 'white',
+                    scales: {
+                        x: {
+                            ticks: {
+                                color: 'white',
+                            }
+                        },
+                        y: {
+                            ticks: {
+                                color: 'white',
+                            }
+                        }
+                    }
+                }
             };
 
             let dashboardClass = new Chart(
@@ -198,7 +215,7 @@
             );
 
         }
-        
+
         obterDadosGrafico();
 
     </script>
